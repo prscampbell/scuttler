@@ -1,12 +1,12 @@
-package eu.scuttlercup.dao;
+package eu.scuttlercup.riot.dao;
 
 import java.io.IOException;
 import java.util.Optional;
 import java.util.function.BiFunction;
 
-import eu.scuttlercup.Scuttler;
-import eu.scuttlercup.dto.Summoner;
-import eu.scuttlercup.util.ResponseCode;
+import eu.scuttlercup.riot.Scuttler;
+import eu.scuttlercup.riot.dto.Summoner;
+import eu.scuttlercup.riot.util.ResponseCode;
 import okhttp3.Response;
 
 public class Summoners 

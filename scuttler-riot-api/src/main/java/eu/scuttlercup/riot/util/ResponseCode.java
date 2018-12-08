@@ -1,4 +1,4 @@
-package eu.scuttlercup.util;
+package eu.scuttlercup.riot.util;
 
 public class ResponseCode
 {

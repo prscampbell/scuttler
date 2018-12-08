@@ -1,4 +1,4 @@
-package eu.scuttlercup.dto;
+package eu.scuttlercup.riot.dto;
 
 public class Summoner {
 

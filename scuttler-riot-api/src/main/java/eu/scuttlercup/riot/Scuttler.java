@@ -1,4 +1,4 @@
-package eu.scuttlercup;
+package eu.scuttlercup.riot;
 
 import java.io.IOException;
 import java.util.Optional;

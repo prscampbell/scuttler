@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.Gson;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity(name = "Tournament")
 @Table(name = "TOURNAMENT")
@@ -22,7 +22,7 @@ public class Tournament
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "START_TIMESTAMP")
     private Date start;
@@ -37,10 +37,12 @@ public class Tournament
         return id;
     }
 
+    @JsonProperty("start_timestamp")
     public Date getStart() {
         return start;
     }
 
+    @JsonProperty("registration_deadline")
     public Date getRegistration() {
         return registration;
     }
@@ -48,11 +50,6 @@ public class Tournament
     @JsonIgnore
     public boolean hasRegistrationDeadlinePassed() {
         return registration.before(new Date());
-    }
-    
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
     }
     
 }

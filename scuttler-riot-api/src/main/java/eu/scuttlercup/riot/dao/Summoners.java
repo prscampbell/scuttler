@@ -22,18 +22,22 @@ public class Summoners
     private static final String ID_URL = BASE_URL + "/summoners/%s";
     
     public static Optional<Summoner> byAccountId(String accountId) {
+        System.out.println("Sending request to: " + String.format(ACCOUNT_ID_URL, accountId));
         return getSummoner.apply(ACCOUNT_ID_URL, accountId);
     }
 
     public static Optional<Summoner> byName(String name) {
+        System.out.println("Sending request to: " + String.format(NAME_URL, name));
         return getSummoner.apply(NAME_URL, name);
     }
 
     public static Optional<Summoner> byPUUID(String puuid) {
+        System.out.println("Sending request to: " + String.format(PUUID_URL, puuid));
         return getSummoner.apply(PUUID_URL, puuid);
     }
 
     public static Optional<Summoner> byId(String id) {
+        System.out.println("Sending request to: " + String.format(ID_URL, id));
         return getSummoner.apply(ID_URL, id);
     }
     

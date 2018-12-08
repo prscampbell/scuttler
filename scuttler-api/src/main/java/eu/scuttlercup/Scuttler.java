@@ -1,9 +1,12 @@
 package eu.scuttlercup;
 
+import eu.scuttlercup.dao.Matches;
 import eu.scuttlercup.dao.Registrations;
 import eu.scuttlercup.dao.Tournaments;
+import eu.scuttlercup.dto.Match;
 import eu.scuttlercup.dto.Registration;
 import eu.scuttlercup.dto.Tournament;
+import eu.scuttlercup.resource.MatchesResource;
 import eu.scuttlercup.resource.RegistrationsResource;
 import eu.scuttlercup.resource.TournamentsResource;
 import io.dropwizard.Application;
@@ -20,7 +23,7 @@ public class Scuttler extends Application<ScuttlerConfiguration>
         new Scuttler().run(args);
     }
     
-    private final HibernateBundle<ScuttlerConfiguration> hibernate = new HibernateBundle<ScuttlerConfiguration>(Registration.class, Tournament.class) 
+    private final HibernateBundle<ScuttlerConfiguration> hibernate = new HibernateBundle<ScuttlerConfiguration>(Registration.class, Tournament.class, Match.class) 
     {
         public DataSourceFactory getDataSourceFactory(ScuttlerConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -41,6 +44,9 @@ public class Scuttler extends Application<ScuttlerConfiguration>
 
         Tournaments.setSessionFactory(hibernate.getSessionFactory());
         environment.jersey().register(TournamentsResource.class);
+
+        Matches.setSessionFactory(hibernate.getSessionFactory());
+        environment.jersey().register(MatchesResource.class);
     }
 
 }

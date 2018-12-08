@@ -10,19 +10,20 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import eu.scuttlercup.dao.Matches;
 import eu.scuttlercup.dao.Tournaments;
 import eu.scuttlercup.dto.Tournament;
 import io.dropwizard.hibernate.UnitOfWork;
 
-@Path("/tournaments")
+@Path("/matches")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class TournamentsResource 
+public class MatchesResource 
 {
 
     @GET
     @UnitOfWork
-    public Response latest()
+    public Response matches()
     {
         Optional<Tournament> tournament = Tournaments.latest();
         
@@ -30,7 +31,6 @@ public class TournamentsResource
             return Response.status(Status.NOT_FOUND).build();
         }
         
-        return Response.ok(tournament.get()).build();
+        return Response.ok(Matches.get(tournament.get().getId())).build();
     }
-    
 }

@@ -35,8 +35,8 @@ public class Tournaments
             Root<Tournament> root = cq.from(Tournament.class);
             
             cq
-            .where(cb.greaterThan(root.get("registration"), new Date()))
-            .orderBy(cb.desc(root.get("start")));
+            .where(cb.greaterThanOrEqualTo(root.get("start"), new Date()))
+            .orderBy(cb.desc(root.get("registration")));
             
             List<Tournament> list = session.createQuery(cq).getResultList();
             return (list == null || list.isEmpty() ? Optional.empty() : Optional.of(list.get(0)));

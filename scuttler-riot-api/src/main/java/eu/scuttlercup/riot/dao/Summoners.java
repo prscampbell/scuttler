@@ -63,6 +63,12 @@ public class Summoners
             ex.printStackTrace();
             return Optional.empty();
         }
+        finally
+        {
+            if(response != null) {
+                response.close();
+            }
+        }
     }
     
 }
